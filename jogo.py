@@ -6,6 +6,7 @@ from random import randint
 md.titulo('Bem vindo ao jogo de advinhação!')
 
 numero_secreto = randint(0,100) # geração aleátoria de um número de 0 a 100
+pontos = 100 # número de pontos
 
 print('Escolha seu nivel de dificuldade')
 print('(1) Facil (2) Médio (3) Dificil')
@@ -32,14 +33,20 @@ for tentativa in range(1, max_tentativas + 1):
     if 0 <= chute <= 100:
         if chute == numero_secreto:
             print('Você acertou')
+            print(f'Você terminou o jogo com {pontos} pontos')
             break
         elif chute > numero_secreto:
             print('Seu chute foi maior que o número secreto')
+            pontos -= md.pontos_perdidos(chute, numero_secreto)
         elif chute < numero_secreto:
             print('Seu chute foi menor que o número secreto')
+            pontos -= md.pontos_perdidos(chute, numero_secreto)
     else:
         print('Você digitou um número invalido')
         tentativa -= 1
+    if pontos <= 0:
+        print('Você não tem mais pontos')
+        break
 
 # Fim do jogo
 print('Fim do Jogo')
