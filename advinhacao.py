@@ -1,4 +1,4 @@
-def advinhacao():
+def jogar():
     # Importações do projeto
     import mods as md
     from random import randint
@@ -51,3 +51,7 @@ def advinhacao():
 
     # Fim do jogo
     print('Fim do Jogo')
+
+# Codigo para que possar executar o jogo de advinhação diretamente pelo terminal.
+if __name__ == '__main__':
+    jogar()
