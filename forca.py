@@ -7,9 +7,7 @@ def jogar():
 
     # Variaveis iniciais do jogo
     palavra_secreta = 'BANANA'
-    letras_acertadas = []
-    for letra in palavra_secreta:
-        letras_acertadas.append('_') 
+    letras_acertadas = ['_' for letra in palavra_secreta] 
 
     # Condições iniciais do jogo
     enforcou = False
