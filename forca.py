@@ -1,12 +1,19 @@
 def jogar():
     #Importações do projeto
     import mods as md
+    from random import choice
     
     # Titulo do jogo
     md.titulo('Jogo da forca')
 
     # Variaveis iniciais do jogo
-    palavra_secreta = 'BANANA'
+    lista_palavras = []
+    with open('palavras.txt', 'r') as arquivo:
+        for linha in arquivo:
+            linha = linha.strip().upper()
+            lista_palavras.append(linha)
+
+    palavra_secreta = choice(lista_palavras)
     letras_acertadas = ['_' for letra in palavra_secreta] 
 
     # Condições iniciais do jogo
@@ -16,7 +23,11 @@ def jogar():
 
     # Laço para fazer a analise das palavras chutadas
     while not enforcou and not acertou:
-        print(letras_acertadas)
+        print()
+        for letras in letras_acertadas:
+            print(letras, end=' ')
+        print()
+        print()
         chute = input('Digite uma letra: ').strip().upper()
         posicao = 1
         if chute in palavra_secreta:
